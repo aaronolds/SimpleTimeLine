@@ -1,4 +1,4 @@
-namespace SimpleTimeLine
+﻿namespace SimpleTimeLine
 {
     public enum PeriodRelation
 	{

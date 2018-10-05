@@ -4,27 +4,10 @@ using System.Collections.Generic;
 
 namespace SimpleTimeLine
 {
-    public interface ITimePeriodCollection : IList<ITimePeriod>, ITimePeriod
+    public interface ITimePeriodCollection : IList<ITimePeriod>, ITimePeriodBase
     {
         bool ContainsPeriod(ITimePeriod test);
         void AddRange(IEnumerable<ITimePeriod> periods);
-
-        bool HasOverlaps();
-
-        bool HasGaps();
-
-        bool HasOverlapPeriods(ITimePeriod test);
-
-		bool HasIntersectionPeriods( DateTime test );
-
-		bool HasIntersectionPeriods( ITimePeriod test );
-        ITimePeriodCollection InsidePeriods( ITimePeriod test );
-
-		ITimePeriodCollection OverlapPeriods( ITimePeriod test );
-
-		ITimePeriodCollection IntersectionPeriods( DateTime test );
-
-		ITimePeriodCollection IntersectionPeriods( ITimePeriod test );
     }
 
     public class TimePeriodCollection : ITimePeriodCollection
@@ -99,9 +82,13 @@ namespace SimpleTimeLine
                 TimeSpan? duration = GetDuration();
                 return duration.HasValue ? duration.Value : DateTime.MaxValue - DateTime.MinValue;
             }
+            set
+            {
+                throw new Exception("Duration cannot be set");
+            }
         }
 
-        TimeSpan ITimePeriod.Duration { get { return Duration; } set { } }
+        public string Description { get; set; }
 
         public void Add(ITimePeriod item)
         {
@@ -306,75 +293,6 @@ namespace SimpleTimeLine
         }
 
         public void Setup(DateTime start, DateTime dateTime)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual bool IsSamePeriod(ITimePeriod test)
-        {
-            if (test == null)
-            {
-                throw new ArgumentNullException("test");
-            }
-            return Start == test.Start && End == test.End;
-        }
-
-        public bool HasOverlaps()
-        {
-            bool hasOverlaps = false;
-			if ( Count == 2 )
-			{
-				hasOverlaps = this[ 0 ].OverlapsWith( this[ 1 ] );
-			}
-			else if ( Count > 2 )
-			{
-				//hasOverlaps = new TimeLineMomentCollection( this ).HasOverlaps();
-			}
-
-			return hasOverlaps;
-        }
-
-        public bool HasGaps()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool HasOverlapPeriods(ITimePeriod test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool HasIntersectionPeriods(DateTime test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool HasIntersectionPeriods(ITimePeriod test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITimePeriodCollection InsidePeriods(ITimePeriod test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITimePeriodCollection OverlapPeriods(ITimePeriod test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITimePeriodCollection IntersectionPeriods(DateTime test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITimePeriodCollection IntersectionPeriods(ITimePeriod test)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool OverlapsWith(ITimePeriod timePeriod)
         {
             throw new NotImplementedException();
         }

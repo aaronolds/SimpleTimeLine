@@ -2,17 +2,20 @@
 
 namespace SimpleTimeLine
 {
-    public interface ITimePeriod
+    public interface ITimePeriod : ITimePeriodBase
     {
-        DateTime Start { get; }
-        DateTime End { get; }
-        bool HasStart { get; }
-        bool HasEnd { get; }
-        TimeSpan Duration { get; set; }
-
+        // new DateTime Start { get; }
+        // DateTime End { get; }
+        // bool HasStart { get; }
+        // bool HasEnd { get; }
+        // TimeSpan Duration { get; set; }
+        // string Description { get; set; }
         void Setup(DateTime start, DateTime dateTime);
         bool IsSamePeriod(ITimePeriod test);
-        bool OverlapsWith(ITimePeriod timePeriod);
+        bool OverlapsWith(ITimePeriod test);
+        bool HasInside(ITimePeriod test);
+        bool HasInside(DateTime test);
+        bool IntersectsWith(ITimePeriod test);
     }
 
     public class TimePeriod : ITimePeriod
@@ -44,6 +47,35 @@ namespace SimpleTimeLine
             }
         }
 
+        public string Description { get; set; }
+
+        public bool HasInside(ITimePeriod test)
+        {
+            if (test == null)
+            {
+                throw new ArgumentNullException("test");
+            }
+            return TimePeriodCalc.HasInside(this, test);
+        }
+
+        public bool HasInside(DateTime test)
+        {
+            if (test == null)
+            {
+                throw new ArgumentNullException("test");
+            }
+            return TimePeriodCalc.HasInside(this, test);
+        }
+
+        public bool IntersectsWith(ITimePeriod test)
+        {
+            if (test == null)
+            {
+                throw new ArgumentNullException("test");
+            }
+            return TimePeriodCalc.IntersectsWith(this, test);
+        }
+
         public bool IsSamePeriod(ITimePeriod test)
         {
             if (test == null)
@@ -55,11 +87,11 @@ namespace SimpleTimeLine
 
         public bool OverlapsWith(ITimePeriod test)
         {
-			if ( test == null )
-			{
-				throw new ArgumentNullException( "test" );
-			}
-			return TimePeriodCalc.OverlapsWith( this, test );
+            if (test == null)
+            {
+                throw new ArgumentNullException("test");
+            }
+            return TimePeriodCalc.OverlapsWith(this, test);
         }
 
         public void Setup(DateTime start, DateTime end)

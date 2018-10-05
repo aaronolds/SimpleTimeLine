@@ -2,7 +2,7 @@ using System;
 
 namespace SimpleTimeLine
 {
-   internal static class TimePeriodCalc
+   public static class TimePeriodCalc
 	{
 
 		public static bool HasInside( ITimePeriod period, DateTime test )

@@ -88,5 +88,75 @@ namespace SimpleTimeLine.Test
             var timePeriodCollection = GetTimePeriodCollection();
             Assert.Equal(new TimeSpan(279, 00, 00, 00), timePeriodCollection.Duration);
         }
+
+        [Fact]
+        public void TimePeriodCollectionCountAndClear()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+            Assert.True(timePeriodCollection.Count > 0);
+            timePeriodCollection.Clear();
+            Assert.True(timePeriodCollection.Count == 0);
+        }
+
+        [Fact]
+        public void TimePeriodCollectionContains()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+
+            DateTime start = new DateTime(2018, 2, 3);
+            DateTime end = new DateTime(2018, 8, 9);
+            var timePeriod = new SimpleTimeLine.TimePeriod(start, end);
+            Assert.True(timePeriodCollection.ContainsPeriod(timePeriod));
+        }
+
+        [Fact]
+        public void TimePeriodCollectionContainsFalse()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+
+            DateTime start = new DateTime(2018, 1, 3);
+            DateTime end = new DateTime(2018, 8, 9);
+            var timePeriod = new SimpleTimeLine.TimePeriod(start, end);
+            Assert.False(timePeriodCollection.ContainsPeriod(timePeriod));
+        }
+
+        [Fact]
+        public void TimePeriodCollectionContainsNull()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+            Assert.Throws<ArgumentNullException>(() => timePeriodCollection.ContainsPeriod(null));
+        }
+
+        [Fact]
+        public void TimePeriodCollectionInsert()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+
+            DateTime start = new DateTime(2018, 1, 3);
+            DateTime end = new DateTime(2018, 8, 9);
+            var timePeriod = new SimpleTimeLine.TimePeriod(start, end);
+            timePeriodCollection.Insert(0, timePeriod);
+            //Assert.False(timePeriodCollection.ContainsPeriod(timePeriod));
+            Assert.Equal(timePeriod, timePeriodCollection[0]);
+        }
+
+        [Fact]
+        public void TimePeriodCollectionInsertArguemntOutOfRange()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+
+            DateTime start = new DateTime(2018, 1, 3);
+            DateTime end = new DateTime(2018, 8, 9);
+            var timePeriod = new SimpleTimeLine.TimePeriod(start, end);
+            Assert.Throws<ArgumentOutOfRangeException>(() => timePeriodCollection.Insert(-1, timePeriod));
+        }
+
+       [Fact]
+        public void TimePeriodCollectionInsertArguemntNull()
+        {
+            var timePeriodCollection = GetTimePeriodCollection();
+
+            Assert.Throws<System.ArgumentNullException>(() => timePeriodCollection.Insert(0, null));
+        }
     }
 }
