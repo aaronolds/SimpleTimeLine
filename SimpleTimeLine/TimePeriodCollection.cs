@@ -8,6 +8,23 @@ namespace SimpleTimeLine
     {
         bool ContainsPeriod(ITimePeriod test);
         void AddRange(IEnumerable<ITimePeriod> periods);
+
+        bool HasOverlaps();
+
+        bool HasGaps();
+
+        bool HasOverlapPeriods(ITimePeriod test);
+
+		bool HasIntersectionPeriods( DateTime test );
+
+		bool HasIntersectionPeriods( ITimePeriod test );
+        ITimePeriodCollection InsidePeriods( ITimePeriod test );
+
+		ITimePeriodCollection OverlapPeriods( ITimePeriod test );
+
+		ITimePeriodCollection IntersectionPeriods( DateTime test );
+
+		ITimePeriodCollection IntersectionPeriods( ITimePeriod test );
     }
 
     public class TimePeriodCollection : ITimePeriodCollection
@@ -141,37 +158,57 @@ namespace SimpleTimeLine
 
         public void CopyTo(ITimePeriod[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            if (array == null)
+            {
+                throw new ArgumentNullException("array");
+            }
+            periods.CopyTo(array, arrayIndex);
         }
 
         public IEnumerator<ITimePeriod> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return periods.GetEnumerator();
         }
 
         public int IndexOf(ITimePeriod item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            return periods.IndexOf(item);
         }
 
         public void Insert(int index, ITimePeriod item)
         {
-            throw new NotImplementedException();
+            if (index < 0 || index > Count)
+            {
+                throw new ArgumentOutOfRangeException("index");
+            }
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            periods.Insert(index, item);
         }
 
         public bool Remove(ITimePeriod item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            return periods.Remove(item);
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            periods.RemoveAt(index);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         protected virtual DateTime? GetStart()
@@ -273,7 +310,71 @@ namespace SimpleTimeLine
             throw new NotImplementedException();
         }
 
-        public bool IsSamePeriod(ITimePeriod test)
+        public virtual bool IsSamePeriod(ITimePeriod test)
+        {
+            if (test == null)
+            {
+                throw new ArgumentNullException("test");
+            }
+            return Start == test.Start && End == test.End;
+        }
+
+        public bool HasOverlaps()
+        {
+            bool hasOverlaps = false;
+			if ( Count == 2 )
+			{
+				hasOverlaps = this[ 0 ].OverlapsWith( this[ 1 ] );
+			}
+			else if ( Count > 2 )
+			{
+				//hasOverlaps = new TimeLineMomentCollection( this ).HasOverlaps();
+			}
+
+			return hasOverlaps;
+        }
+
+        public bool HasGaps()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasOverlapPeriods(ITimePeriod test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasIntersectionPeriods(DateTime test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasIntersectionPeriods(ITimePeriod test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ITimePeriodCollection InsidePeriods(ITimePeriod test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ITimePeriodCollection OverlapPeriods(ITimePeriod test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ITimePeriodCollection IntersectionPeriods(DateTime test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ITimePeriodCollection IntersectionPeriods(ITimePeriod test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool OverlapsWith(ITimePeriod timePeriod)
         {
             throw new NotImplementedException();
         }

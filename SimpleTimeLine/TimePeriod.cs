@@ -12,6 +12,7 @@ namespace SimpleTimeLine
 
         void Setup(DateTime start, DateTime dateTime);
         bool IsSamePeriod(ITimePeriod test);
+        bool OverlapsWith(ITimePeriod timePeriod);
     }
 
     public class TimePeriod : ITimePeriod
@@ -50,6 +51,15 @@ namespace SimpleTimeLine
                 throw new ArgumentNullException("test");
             }
             return _start == test.Start && _end == test.End;
+        }
+
+        public bool OverlapsWith(ITimePeriod test)
+        {
+			if ( test == null )
+			{
+				throw new ArgumentNullException( "test" );
+			}
+			return TimePeriodCalc.OverlapsWith( this, test );
         }
 
         public void Setup(DateTime start, DateTime end)

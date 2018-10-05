@@ -1,4 +1,4 @@
-SF:E:\Research\SimpleTimeLine\SimpleTimeLine\TimeLine.cs
+SF:C:\Source\SimpleTimeLine\SimpleTimeLine\TimeLine.cs
 FN:10,System.Void SimpleTimeLine.TimeLine::AddTimePeriod(SimpleTimeLine.ITimePeriod)
 FNDA:0,System.Void SimpleTimeLine.TimeLine::AddTimePeriod(SimpleTimeLine.ITimePeriod)
 DA:11,0
@@ -10,7 +10,7 @@ BRH:0
 FNF:1
 FNH:0
 end_of_record
-SF:E:\Research\SimpleTimeLine\SimpleTimeLine\TimePeriod.cs
+SF:C:\Source\SimpleTimeLine\SimpleTimeLine\TimePeriod.cs
 FN:29,System.DateTime SimpleTimeLine.TimePeriod::get_Start()
 FNDA:14,System.DateTime SimpleTimeLine.TimePeriod::get_Start()
 DA:30,14
@@ -66,7 +66,7 @@ BRH:6
 FNF:9
 FNH:7
 end_of_record
-SF:E:\Research\SimpleTimeLine\SimpleTimeLine\TimePeriodCollection.cs
+SF:C:\Source\SimpleTimeLine\SimpleTimeLine\TimePeriodCollection.cs
 FN:31,SimpleTimeLine.ITimePeriod SimpleTimeLine.TimePeriodCollection::get_Item(System.Int32)
 FNDA:6,SimpleTimeLine.ITimePeriod SimpleTimeLine.TimePeriodCollection::get_Item(System.Int32)
 DA:32,6
