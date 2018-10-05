@@ -1,9 +1,0 @@
-E:\Research\SimpleTimeLine\SimpleTimeLine\bin\Debug\netcoreapp2.1\SimpleTimeLine.deps.json
-E:\Research\SimpleTimeLine\SimpleTimeLine\bin\Debug\netcoreapp2.1\SimpleTimeLine.dll
-E:\Research\SimpleTimeLine\SimpleTimeLine\bin\Debug\netcoreapp2.1\SimpleTimeLine.pdb
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.csprojAssemblyReference.cache
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.csproj.CoreCompileInputs.cache
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.AssemblyInfoInputs.cache
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.AssemblyInfo.cs
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.dll
-E:\Research\SimpleTimeLine\SimpleTimeLine\obj\Debug\netcoreapp2.1\SimpleTimeLine.pdb
